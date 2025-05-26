@@ -34,7 +34,7 @@ python -m venv .venv
 ```
 3. Instala dependencias:
 ```bash
-pip install -r requirements.txt
+pip install sqlalchemy
 ```
 4. Ejecuta el script principal:
 ```bash
