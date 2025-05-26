@@ -38,5 +38,5 @@ pip install sqlalchemy
 ```
 4. Ejecuta el script principal:
 ```bash
-python src/vista/app_v2.py
+python src/vista/app.py
 ```
