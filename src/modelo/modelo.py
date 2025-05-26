@@ -1,22 +1,19 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship, sessionmaker, declarative_base
+# src/logica/modelos.py
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 from src.modelo.declarative_base import Base
 
-class Articulo(Base):
-    __tablename__ = 'articulos'
+class Asignatura(Base):
+    __tablename__ = 'asignaturas'
 
     id = Column(Integer, primary_key=True)
-    titulo = Column(String, nullable=False)
-    comentarios = relationship("Comentario", back_populates="articulo", cascade="all, delete-orphan")
+    nombre = Column(String, nullable=False)
+    estudiantes = relationship("Estudiante", back_populates="asignatura")
 
-
-class Comentario(Base):
-    __tablename__ = 'comentarios'
+class Estudiante(Base):
+    __tablename__ = 'estudiantes'
 
     id = Column(Integer, primary_key=True)
-    comentario = Column(String, nullable=False)
-    articulo_id = Column(Integer, ForeignKey('articulos.id'))
-    articulo = relationship("Articulo", back_populates="comentarios")
-
-
-
+    nombre = Column(String, nullable=False)
+    asignatura_id = Column(Integer, ForeignKey('asignaturas.id'))
+    asignatura = relationship("Asignatura", back_populates="estudiantes")
